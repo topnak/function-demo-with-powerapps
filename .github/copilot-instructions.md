@@ -6,7 +6,7 @@ This repository contains an Azure Function with an HTTP trigger (`validateRefund
 
 ## Technology Stack
 
-- **Language**: Python 3.12+
+- **Language**: Python 3.12+ (GitHub Actions workflow uses 3.12)
 - **Framework**: Azure Functions (Python)
 - **Testing**: pytest with coverage reporting
 - **Deployment**: GitHub Actions to Azure Functions
