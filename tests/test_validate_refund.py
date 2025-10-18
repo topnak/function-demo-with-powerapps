@@ -166,6 +166,20 @@ class TestValidateRefundFunction(unittest.TestCase):
         response_data = json.loads(response.get_body())
         self.assertIn('error', response_data)
 
+    def test_empty_request_body(self):
+        """Test request with empty body"""
+        req = func.HttpRequest(
+            method='POST',
+            body=b'',
+            url='/api/validateRefund'
+        )
+
+        response = main(req)
+
+        self.assertEqual(response.status_code, 400)
+        response_data = json.loads(response.get_body())
+        self.assertIn('error', response_data)
+
     def test_missing_required_fields(self):
         """Test request with missing required fields"""
         req_body = {

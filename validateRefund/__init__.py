@@ -58,6 +58,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         # Parse request body
         req_body = req.get_json()
+        if req_body is None:
+            return func.HttpResponse(
+                json.dumps({
+                    "error": "Request body is empty or invalid JSON"
+                }),
+                status_code=400,
+                mimetype="application/json"
+            )
     except ValueError:
         return func.HttpResponse(
             json.dumps({
